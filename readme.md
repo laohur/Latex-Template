@@ -7,3 +7,10 @@ based on EACL2021 https://2021.eacl.org/downloads/eacl2021-templates.zip  and in
 * multi inputs
 * UTF8
 * Graphics
+* Equations
+
+## equation
+https://www.latexlive.com/
+
+## table
+https://www.tablesgenerator.com/
