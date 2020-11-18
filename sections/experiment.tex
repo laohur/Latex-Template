@@ -3,43 +3,62 @@
 \label{sec:experiment}
 
 
-\subsection{Accessibility}
-\label{ssec:accessibility}
+\subsection{Hyperlinks}
 
-In an effort to accommodate people who are color-blind (as well as those printing to paper), grayscale readability is strongly encouraged.
-Color is not forbidden, but authors should ensure that tables and figures do not rely solely on color to convey critical distinctions.
-A simple criterion:
-All curves and points in your figures should be clearly distinguishable without color.
-
-\subsection{Translation of non-English Terms}
-
-It is also advised to supplement non-English characters and terms with appropriate transliterations and/or translations since not all readers understand all such characters and terms.
-Inline transliteration or translation can be represented in the order of:
-\begin{center}
-	\begin{tabular}{c}
-		original-form \\
-		transliteration \\
-		``translation''
-	\end{tabular}
-\end{center}
-
-\subsection{\LaTeX{} Compilation Issues}
-You may encounter the following error during compilation: 
+Users of older versions of \LaTeX{} may encounter the following error during compilation: 
 \begin{quote}
-	{\small\verb|\pdfendlink|} ended up in different nesting level than {\small\verb|\pdfstartlink|}.
+	\tt\verb|\pdfendlink| ended up in different nesting level than \verb|\pdfstartlink|.
 \end{quote}
-This happens when \texttt{\small pdflatex} is used and a citation splits across a page boundary.
-To fix this, the style file contains a patch consisting of two lines:
-(1) {\small\verb|\RequirePackage{etoolbox}|} (line 455 in \texttt{\small eacl2021.sty}), and
-(2) A long line below (line 456 in \texttt{\small eacl2021.sty}).
+This happens when pdf\LaTeX{} is used and a citation splits across a page boundary. The best way to fix this is to upgrade \LaTeX{} to 2018-12-01 or later.
 
-If you still encounter compilation issues even with the patch enabled, disable the patch by commenting the two lines, and then disable the \texttt{\small hyperref} package by loading the style file with the \texttt{\small nohyperref} option:
+\subsection{Citations}
 
-\noindent
-{\small\verb|\usepackage[nohyperref]{eacl2021}|}
+\begin{table*}
+	\centering
+	\begin{tabular}{lll}
+		\hline
+		\textbf{Output} & \textbf{natbib command} & \textbf{Old ACL-style command}\\
+		\hline
+		\citep{Gusfield:97} & \verb|\citep| & \verb|\cite| \\
+		\citealp{Gusfield:97} & \verb|\citealp| & no equivalent \\
+		\citet{Gusfield:97} & \verb|\citet| & \verb|\newcite| \\
+		\citeyearpar{Gusfield:97} & \verb|\citeyearpar| & \verb|\shortcite| \\
+		\hline
+	\end{tabular}
+	\caption{\label{citation-guide}
+		Citation commands supported by the style file.
+		The style is based on the natbib package and supports all natbib citation commands.
+		It also supports commands defined in previous ACL style files for compatibility.
+	}
+\end{table*}
 
-\noindent
-Then recompile, find the problematic citation, and rewrite the sentence containing the citation. (See, {\em e.g.}, \url{http://tug.org/errors.html})
+Table~\ref{citation-guide} shows the syntax supported by the style files.
+We encourage you to use the natbib styles.
+You can use the command \verb|\citet| (cite in text) to get ``author (year)'' citations, like this citation to a paper by \citet{Gusfield:97}.
+You can use the command \verb|\citep| (cite in parentheses) to get ``(author, year)'' citations \citep{Gusfield:97}.
+You can use the command \verb|\citealp| (alternative cite without parentheses) to get ``author, year'' citations, which is useful for using citations within parentheses (e.g. \citealp{Gusfield:97}).
 
+\subsection{References}
 
+\nocite{Ando2005,borschinger-johnson-2011-particle,andrew2007scalable,rasooli-tetrault-2015,goodman-etal-2016-noise,harper-2014-learning}
+
+The \LaTeX{} and Bib\TeX{} style files provided roughly follow the American Psychological Association format.
+If your own bib file is named \texttt{custom.bib}, then placing the following before any appendices in your \LaTeX{} file will generate the references section for you:
+\begin{quote}
+	\begin{verbatim}
+		\bibliographystyle{acl_natbib}
+		\bibliography{custom}
+	\end{verbatim}
+\end{quote}
+
+You can obtain the complete ACL Anthology as a Bib\TeX{} file from \url{https://aclweb.org/anthology/anthology.bib.gz}.
+To include both the Anthology and your own .bib file, use the following instead of the above.
+\begin{quote}
+	\begin{verbatim}
+		\bibliographystyle{acl_natbib}
+		\bibliography{anthology,custom}
+	\end{verbatim}
+\end{quote}
+
+Please see Section~\ref{sec:bibtex} for information on preparing Bib\TeX{} files.
 

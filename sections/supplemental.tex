@@ -2,16 +2,21 @@
 \section{Supplemental Material}
 \label{sec:supplemental}
 
-Submissions may include non-readable supplementary material used in the work and described in the paper.
-Any accompanying software and/or data should include licenses and documentation of research review as appropriate.
-Supplementary material may report preprocessing decisions, model parameters, and other details necessary for the replication of the experiments reported in the paper.
-Seemingly small preprocessing decisions can sometimes make a large difference in performance, so it is crucial to record such decisions to precisely characterize state-of-the-art methods. 
 
-Nonetheless, supplementary material should be supplementary (rather than central) to the paper.
-\textbf{Submissions that misuse the supplementary material may be rejected without review.}
-Supplementary material may include explanations or details of proofs or derivations that do not fit into the paper, lists of
-features or feature templates, sample inputs and outputs for a system, pseudo-code or source code, and data.
-(Source code and data should be separate uploads, rather than part of the paper).
 
-The paper should not rely on the supplementary material: while the paper may refer to and cite the supplementary material and the supplementary material will be available to the reviewers, they will not be asked to review the supplementary material.
+\paragraph{Notable changes} in the templates \url{https://2021.naacl.org/calls/style-and-formatting/} (by Matt Post and David Chiang) are:
+
+NAACL-HLT 2021 is using latex templates based on the new organization of templates and formatting guidelines for *ACL papers here\url{https://github.com/acl-org/ACLPUB}.
+
+We now use the “lineno” package instead of writing pseudo-numbers down the margins. Line numbers now line up, and many other simplifications were enabled by this change.
+
+We will not use the \verb|\aclfinalcopy| command. Instead, the review copy (anonymized, page and line numbers) is enabled by passing “review” as an “acl” package argument:
+
+\begin{verbatim}
+    \usepackage[review]{acl}
+\end{verbatim}
+
+There is no \verb|\aclpaperid| macro. Softconf will add the submission ID stamp.
+
+A few bug fixes that have cropped up over the years and then sometimes inadvertently reintroduced.
 
