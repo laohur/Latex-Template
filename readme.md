@@ -13,3 +13,5 @@ https://www.latexlive.com/
 
 ## table
 https://www.tablesgenerator.com/
+
+## pdf as clear figure
